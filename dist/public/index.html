@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="Main">
+        <div class="Navbar">
+            <div>Temp File Storage</div>
+        </div>
+        <div class="Content">
+            <div class="Uploadarea">
+                <input type="text" id="filename" placeholder="File Name"/>
+                <div></div><div></div>
+                <input type="file" id="fileupload"/>
+                <input type="button" id="upload" value="Upload" onclick="Upload()"/>
+            </div>
+            <div></div>
+            <div id="Uploadresult" class="hideblock">
+                <div>
+                    <span id="sharelink"></span>
+                    <input type="button" value="Share"/>
+                    <input type="button" value="Copy"/>
+                </div>
+            </div>
+            <div id="downloadfile" class="hideblock">
+                <input type="button" value="Download" id="downloadbutton"/>
+            </div>
+        </div>
+    </div>
+<script src="/js/index.js"></script>
+</body>
+</html>

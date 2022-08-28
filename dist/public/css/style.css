@@ -1,0 +1,60 @@
+.Navbar{
+    width: 100%;
+    display: flex;
+    background-color:black;
+    align-items: center;
+    justify-content: center;
+}
+
+.Navbar>div{
+    font-weight: bold;
+    font-size: large;
+    color:white;
+    font-family:cursive;
+    
+}
+
+.Content
+{
+    display: flex;
+    border:solid 5px;
+    border-color: black;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Uploadarea{
+    display: grid;
+    grid-template-rows: auto 2em auto 5em;
+    grid-template-columns: auto auto;
+}
+
+.Uploadresult{
+    display: flex;
+}
+
+#filename{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    padding: 3px;
+}
+
+.hideblock{
+    display: none;
+}
+
+.showblock{
+    display: block;
+}
+
+.Main{
+    display: grid;
+    width:100%;
+    height:100vh;
+    grid-template-rows:3em auto;
+}
+
+body{
+    margin:0px;
+}
