@@ -1,23 +1,33 @@
+let objects = {}
+$id = (id)=>{
+  id in objects ? objects[id] : objects[id]=document.getElementById(id);
+  return objects[id];
+}
+
+$id("fileupload").addEventListener("change",()=>{
+  console.log("sda")
+  $id("filename").value = $id("fileupload").files[0].name;
+})
 
 const Upload = async function() {
 
-    let fileupload = document.getElementById("fileupload");
+    let fileupload = $id("fileupload");
     let formData = new FormData();           
-    formData.append("upl", fileupload.files[0]);
+    formData.append("upl", fileupload.files[0],$id("filename").value);
 
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "/upload", true);
 
     xhr.upload.addEventListener('progress',function(e) {
       var percentComplete = Math.ceil((e.loaded / e.total) * 100);
-      document.getElementById("Uploadresult").className = "showblock";
-      document.getElementById("sharelink").innerHTML = `Uploading.... ${percentComplete} %`;
+      $id("Uploadresult").className = "showblock";
+      $id("sharelink").innerHTML = `Uploading.... ${percentComplete} %`;
     });
 
     xhr.addEventListener("load",function() {
       let data = JSON.parse(this.response);
-      document.getElementById("sharelink").innerHTML = `${window.location.origin}?key=${data.urls[0].name}`;
-      document.getElementById("Uploadresult").className = "showblock";
+      $id("sharelink").innerHTML = `${window.location.origin}?key=${data.urls[0].name}`;
+      $id("Uploadresult").className = "showblock";
 
       const shareData = {
         title: data.urls[0].name,
@@ -51,18 +61,26 @@ if(params.has("key"))
     document.getElementById("downloadfile").className = "showblock";
     document.getElementById("downloadbutton").setAttribute("value",`Download ${filename}`)
     document.getElementById("downloadbutton").addEventListener("click",()=>{
+        document.getElementById("downloadfile").innerHTML = "Waiting for download .... ";
         fetch(`getimage?key=${params.get("key")}`)
       .then(async (response) =>  {
-        const blob = await response.blob();
-        const newBlob = new Blob([blob]);
-    
-        const url = window.URL.createObjectURL(newBlob);
-       const link = document.createElement('a');
-       link.href = url;
-       link.setAttribute('download', filename.concat(''));
-       document.body.appendChild(link);
-       link.click();
+        if(response.status === 200){
+          const blob = await response.blob();
+          const newBlob = new Blob([blob]);
+      
+          const url = window.URL.createObjectURL(newBlob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.setAttribute('download', filename.concat(''));
+          document.body.appendChild(link);
+          link.click();
+          document.getElementById("downloadfile").innerHTML = "Your Download has started";
+        }
+        else
+        {
+          document.getElementById("downloadfile").innerHTML = "Can't get the file requested";
+        }
       })
-      .catch((error)=>{console.log(error)})
+      .catch((error)=>{document.getElementById("downloadfile").innerHTML = "Can't get the file requested"; console.log(error)})
     })
 }
