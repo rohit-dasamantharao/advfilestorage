@@ -9,6 +9,8 @@ $id("fileupload").addEventListener("change",()=>{
   $id("filename").value = $id("fileupload").files[0].name;
 })
 
+$id("year").textContent = new Date().getFullYear();
+
 const Upload = async function() {
 
     let fileupload = $id("fileupload");
@@ -83,4 +85,27 @@ if(params.has("key"))
       })
       .catch((error)=>{document.getElementById("downloadfile").innerHTML = "Can't get the file requested"; console.log(error)})
     })
+}
+else if(params.has("previewkey"))
+{
+  const filename = params.get("previewkey").slice(params.get("previewkey").indexOf('-') + 1);
+        $id("preview").className = "showblock";
+        $id("Content").className = "hideblock";
+        
+        //document.getElementById("preview").innerHTML = "loading ... ";
+        fetch(`getimage?key=${params.get("previewkey")}`)
+      .then(async (response) =>  {
+        if(response.status === 200){
+          const blob = await response.blob();
+          const newBlob = new Blob([blob]);
+          
+          const url = window.URL.createObjectURL(newBlob);
+          $id("preview").src = url;
+        }
+        else
+        {
+          alert("cant preview");
+        }
+      })
+      .catch((error)=>{alert("cant preview");})
 }

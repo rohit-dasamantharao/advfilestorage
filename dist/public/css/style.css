@@ -40,6 +40,20 @@
     padding: 3px;
 }
 
+#footer{
+    position:absolute;
+    bottom: 15px;
+    right: 15px;
+    font-weight: 600;
+    font-size:medium;
+}
+
+#preview{
+    margin-left: auto;
+    margin-right: auto;
+    height: 50%;
+}
+
 .hideblock{
     display: none;
 }
