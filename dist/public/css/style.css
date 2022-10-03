@@ -51,7 +51,7 @@
 #preview{
     margin-left: auto;
     margin-right: auto;
-    height: 50%;
+    object-fit: contain;
 }
 
 .hideblock{

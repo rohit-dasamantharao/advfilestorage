@@ -2,9 +2,12 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
+
+//Detting thr aws,multer and multer-s3
 let aws = require('aws-sdk'), bodyParser = require('body-parser'), multer = require('multer'), multerS3 = require('multer-s3');
 dotenv_1.default.config();
 const app = (0, express_1.default)();
