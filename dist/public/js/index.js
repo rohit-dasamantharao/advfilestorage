@@ -5,7 +5,6 @@ $id = (id)=>{
 }
 
 $id("fileupload").addEventListener("change",()=>{
-  console.log("sda")
   $id("filename").value = $id("fileupload").files[0].name;
 })
 
@@ -34,7 +33,7 @@ const Upload = async function() {
       const shareData = {
         title: data.urls[0].name,
         text: `Sharing ${data.urls[0].name} via advance file storage`,
-        url: `${window.location.origin}?key=${data.urls[0].name}`
+        url: `${window.location.origin}?previewkey=${data.urls[0].name}`
       }
       
       const btn = document.getElementById('Share');
