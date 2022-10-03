@@ -28,7 +28,7 @@ const Upload = async function() {
 
     xhr.addEventListener("load",function() {
       let data = JSON.parse(this.response);
-      $id("sharelink").innerHTML = `${window.location.origin}?key=${data.urls[0].name}`;
+      $id("sharelink").innerHTML = `${window.location.origin}?previewkey=${data.urls[0].name}`;
       $id("Uploadresult").className = "showblock";
 
       const shareData = {
