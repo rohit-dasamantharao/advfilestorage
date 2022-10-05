@@ -8,7 +8,7 @@ $id("fileupload").addEventListener("change",()=>{
   $id("filename").value = $id("fileupload").files[0].name;
 })
 
-$id("year").textContent = new Date().getFullYear();
+//$id("year").textContent = new Date().getFullYear();
 
 const Upload = async function() {
 
