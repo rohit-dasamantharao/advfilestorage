@@ -55,6 +55,15 @@
     width:90%;
     height: 90%;
 }
+#previewloading{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    object-fit: contain;
+    width: 30%;
+    height: 30%;
+}
 
 .hideblock{
     display: none;

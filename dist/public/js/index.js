@@ -88,8 +88,9 @@ if(params.has("key"))
 else if(params.has("previewkey"))
 {
   const filename = params.get("previewkey").slice(params.get("previewkey").indexOf('-') + 1);
-        $id("preview").className = "showblock";
+        
         $id("Content").className = "hideblock";
+        $id("previewloading").className = "showblock";
         
         //document.getElementById("preview").innerHTML = "loading ... ";
         fetch(`getimage?key=${params.get("previewkey")}`)
@@ -100,6 +101,8 @@ else if(params.has("previewkey"))
           
           const url = window.URL.createObjectURL(newBlob);
           $id("preview").src = url;
+          $id("previewloading").className = "hideblock";
+          $id("preview").className = "showblock";
         }
         else
         {
