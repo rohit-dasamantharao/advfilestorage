@@ -1,3 +1,12 @@
+
+/******  For Pwa Service worker    *****/
+window.addEventListener("load",()=>{
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register("/sw.js");
+  }  
+})
+
+
 let objects = {}
 $id = (id)=>{
   id in objects ? objects[id] : objects[id]=document.getElementById(id);
