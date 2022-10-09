@@ -1,4 +1,4 @@
-
+const cachename = "Adv-Fs"
 /******  For Pwa Service worker    *****/
 window.addEventListener("load",()=>{
   if ('serviceWorker' in navigator) {
@@ -112,11 +112,15 @@ else if(params.has("previewkey"))
           $id("preview").src = url;
           $id("previewloading").className = "hideblock";
           $id("preview").className = "showblock";
+
+          cache = await caches.open(cachename)
+          await cache.add(`getimage?key=${params.get("previewkey")}`);
+          await cache.add(window.location.href);
         }
         else
         {
           alert("cant preview");
         }
       })
-      .catch((error)=>{alert("cant preview");})
+      .catch((error)=>{console.log(error);alert("cant preview");})
 }

@@ -1,5 +1,7 @@
+const cachename = "Adv-Fs"
+
 addtocache = async ()=>{
-    cache = await caches.open("Adv-FC")
+    cache = await caches.open(cachename)
     await cache.addAll(["/css/style.css", "/js/index.js", "/", "/index.html"]);
 }
 
