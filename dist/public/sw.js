@@ -2,7 +2,7 @@ const cachename = "Adv-Fs"
 
 addtocache = async ()=>{
     cache = await caches.open(cachename)
-    await cache.addAll(["/css/style.css", "/js/index.js", "/", "/index.html", "loading.gif", "manifest.json"]);
+    await cache.addAll(["/css/style.css", "/js/index.js", "/", "/index.html", "/img/loading.gif", "manifest.json"]);
 }
 
 self.addEventListener("fetch", event => {
