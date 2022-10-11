@@ -36,7 +36,7 @@ const Upload = async function() {
 
     xhr.addEventListener("load",function() {
       let data = JSON.parse(this.response);
-      $id("sharelink").innerHTML = `${window.location.origin}?previewkey=${data.urls[0].name}`;
+      $id("sharelink").innerHTML = `${window.location.origin}?previewkey=${data.urls[0].name} <br/>`;
       $id("Uploadresult").className = "showblock";
 
       const shareData = {
@@ -46,7 +46,8 @@ const Upload = async function() {
       }
       
       const btn = document.getElementById('Share');
-      
+      const openbtn = document.getElementById('Open');
+
       // Share must be triggered by "user activation"
       btn.addEventListener('click', async () => {
         try {
@@ -56,6 +57,12 @@ const Upload = async function() {
           console.log(`Error: ${err}`);
         }
       });
+
+      openbtn.addEventListener('click', async () => {
+       window.open(shareData.url)
+      });
+
+      
 
       alert('The file has been uploaded successfully.');
     });
