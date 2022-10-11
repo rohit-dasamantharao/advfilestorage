@@ -6,6 +6,9 @@ addtocache = async ()=>{
 }
 
 self.addEventListener("fetch", event => {
+  if (event.request.method === "POST") {
+    return;
+  }
     event.respondWith(
       caches.match(event.request).then(cachedResponse => {
         // It can update the cache to serve updated content on the next request
